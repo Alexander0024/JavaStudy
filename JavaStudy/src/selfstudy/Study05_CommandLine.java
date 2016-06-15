@@ -5,8 +5,8 @@ public class Study05_CommandLine {
 	public static void main(String[] args) {
 		Counter counter = new Counter();
 		if (args.length != 0) {
-			for (int i = 0; i < args.length; i++) {
-				counter.count(args[i]);
+			for (String arg : args) {
+				counter.count(arg);
 			}
 			counter.print();
 		} else {
@@ -24,30 +24,25 @@ class Counter {
 		max = Double.MIN_VALUE;
 	}
 	
-	public void count(double i) {
-		sum += i;
-		if (i < min) {
-			min = i;
+	public <T extends Number> void count(T i) {
+		double num = (Double) i;
+		sum += num;
+		if (num < min) {
+			min = num;
 		}
-		if (i > max) {
-			max = i;
+		if (num > max) {
+			max = num;
 		}
 	}
-	
-	public void count(int i) {
-		count((double) i);
-	}
-	
-	public void count(float i) {
-		count((float) i);
-	}
-	
-	public void count(String i) {
+
+	public <T extends String> void count(T i) {
+		double num;
 		try {
-			count(Double.parseDouble(i));
+			num = Double.parseDouble(i);
 		} catch (Exception e) {
-			e.printStackTrace();
+			num = 0.0;
 		}
+		count(num);
 	}
 	
 	public void print() {

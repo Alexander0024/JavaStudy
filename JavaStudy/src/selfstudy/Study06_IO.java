@@ -28,7 +28,7 @@ public class Study06_IO {
 class Reader {
 	private String[] user;
 	private double[] numbers;
-	private List<String> counts = new ArrayList<>();
+	private List<String> counts = new ArrayList<String>();
 	
 	public void readChar() {
 		char c = 0;
@@ -54,7 +54,7 @@ class Reader {
 			} catch (IOException e) {
 				System.out.println("Input IOException" + e.getMessage());
 			}
-		} while (!str.equals("exit"));
+		} while (!"exit".equals(str));
 	}
 	
 	public void readInteger() throws Exception {
@@ -90,7 +90,7 @@ class Reader {
 			}
 			numbers[id] += value;
 			counts.add(str);
-		} while (!str.equals('q'));
+		} while (!str.equals("q"));
 		System.out.println("======================================");
 		System.out.println("ID\tUser\tMoney");
 		for (int i = 0; i < user.length; i++) {
