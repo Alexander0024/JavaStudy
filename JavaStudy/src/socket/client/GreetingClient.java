@@ -17,7 +17,7 @@ public class GreetingClient {
         int port;
         if (args.length == 0) {
             serverName = "127.0.0.1";
-            port = 6768;
+            port = 6769;
         } else {
             serverName = args[0];
             port = Integer.parseInt(args[1]);
