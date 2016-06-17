@@ -28,6 +28,11 @@ public class GreetingServer extends AbstractServer {
     }
 
     @Override
+    public void init() {
+
+    }
+
+    @Override
     public void running(Socket server) throws IOException {
         // 2 Waiting for client
         Utils.println("Get connected to " + server.getRemoteSocketAddress());

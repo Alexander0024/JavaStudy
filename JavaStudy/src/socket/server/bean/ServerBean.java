@@ -8,10 +8,25 @@ import socket.server.base.AbstractServer;
  * Created by Alexander on 2016/6/15.
  */
 public class ServerBean {
+    /**
+     * Server Name
+     */
     private String serverName;
+    /**
+     * Server Port
+     */
     private int serverPort;
+    /**
+     * Server timeout
+     */
     private int timeout;
+    /**
+     * Server start timestamp
+     */
     private long startTime;
+    /**
+     * Server reference
+     */
     private AbstractServer server;
 
     public String getServerName() {

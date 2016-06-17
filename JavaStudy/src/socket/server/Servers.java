@@ -12,10 +12,25 @@ import socket.server.servers.GreetingServer;
  */
 public class Servers {
     public static void main(String[] args) {
-        new GreetingServer().start();
+        startServers();
+        startServerController();
+    }
 
+    /**
+     * Start all servers
+     */
+    private static void startServers() {
+        new GreetingServer().start();
+    }
+
+    /**
+     * Start server controller
+     */
+    private static void startServerController() {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Input command, print servers with 'p', exit with 'exit'");
+        System.out.println("Input commander.");
+        System.out.println("For list all running servers, input 'p'");
+        System.out.println("For stop all servers and exit, input 'exit'");
         String str;
         do {
             try {
