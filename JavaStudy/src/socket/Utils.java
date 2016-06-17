@@ -3,6 +3,8 @@ package socket;
 import java.util.Calendar;
 
 /**
+ * Utils for server side.
+ *
  * Created by Alexander on 2016/6/15.
  */
 public class Utils {

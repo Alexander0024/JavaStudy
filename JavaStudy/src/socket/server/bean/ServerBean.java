@@ -5,6 +5,8 @@ import java.util.Calendar;
 import socket.server.base.AbstractServer;
 
 /**
+ * Entity for server information.
+ *
  * Created by Alexander on 2016/6/15.
  */
 public class ServerBean {
@@ -69,12 +71,13 @@ public class ServerBean {
         this.server = server;
     }
 
-    @Override
-    public String toString() {
+    /**
+     * Print server info.
+     */
+    public void printInfo() {
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(getStartTime());
-        System.out.printf("%20s\t%6d\t%10d\t%20s\n", serverName, serverPort, timeout, c.getTime()
-                .toString());
-        return "";
+        System.out.printf("%20s\t%6d\t%10d\t%20s\n", getServerName(), getServerPort(), getTimeout
+                (), c.getTime().toString());
     }
 }

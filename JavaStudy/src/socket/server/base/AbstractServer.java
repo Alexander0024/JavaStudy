@@ -13,6 +13,7 @@ import socket.server.bean.ServerBean;
 
 /**
  * Abstract Server for Server Model
+ *
  * Created by Alexander on 2016/6/15.
  */
 public abstract class AbstractServer extends Thread {
@@ -68,7 +69,7 @@ public abstract class AbstractServer extends Thread {
                 ("========================================================================");
         System.out.printf("%20s\t%6s\t%10s\t%20s\n", "Server Name", "Port", "Timeout", "StartTime");
         for (ServerBean serverBean : servers) {
-            serverBean.toString();
+            serverBean.printInfo();
         }
         System.out.println
                 ("========================================================================");

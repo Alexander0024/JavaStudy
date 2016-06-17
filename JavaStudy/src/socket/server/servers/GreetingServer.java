@@ -9,6 +9,8 @@ import socket.Utils;
 import socket.server.base.AbstractServer;
 
 /**
+ * Demo greeting server.
+ *
  * Created by Alexander on 2016/6/15.
  */
 public class GreetingServer extends AbstractServer {

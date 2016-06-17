@@ -8,6 +8,8 @@ import socket.server.base.AbstractServer;
 import socket.server.servers.GreetingServer;
 
 /**
+ * Main entrance for the server control.
+ *
  * Created by Alexander on 2016/6/15.
  */
 public class Servers {
