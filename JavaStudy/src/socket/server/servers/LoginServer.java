@@ -12,6 +12,7 @@ import socket.server.base.AbstractServer;
 
 /**
  * Login Server
+ *
  * Created by Alexander on 2016/6/16.
  */
 public class LoginServer extends AbstractServer {
@@ -33,6 +34,12 @@ public class LoginServer extends AbstractServer {
     }
 
     @Override
+    public void init() {
+        mUserMap.put("admin", "admin");
+        mUserMap.put("alex", "alex");
+    }
+
+    @Override
     public void running(Socket server) throws IOException {
         // 2 Waiting for client
         Utils.println("Get connected to " + server.getRemoteSocketAddress());
@@ -43,16 +50,32 @@ public class LoginServer extends AbstractServer {
 
         // 5 Get UTF message from client
         DataInputStream in = new DataInputStream(server.getInputStream());
-        String username = in.readUTF();
-        String password = in.readUTF();
-        Utils.println("Username: " + username);
-        Utils.println("Password: " + password);
+        String username, password;
+        boolean flag = true;
+        do {
+            username = in.readUTF();
+            password = in.readUTF();
+            Utils.println("Username: " + username);
+            Utils.println("Password: " + password);
 
-        // 6 Send message to client
-        out.writeUTF("Name = " + username + "; Password = " + password + "\nGoodbye!");
+            // 6 Send message to client
+            if (isUser(username, password)) {
+                out.writeUTF("true");
+                out.writeUTF("Is allow login!\nGoodbye!");
+                flag = false;
+
+            } else {
+                out.writeUTF("false");
+                out.writeUTF("Check the user info you input!\n");
+            }
+        } while (flag);
 
         // 8 Close connection
         server.close();
         Utils.println("Bye-bye!");
+    }
+
+    private boolean isUser(String name, String password) {
+        return mUserMap.get(name).equals(password);
     }
 }

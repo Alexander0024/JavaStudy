@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 import socket.server.base.AbstractServer;
 import socket.server.servers.GreetingServer;
+import socket.server.servers.LoginServer;
 
 /**
  * Main entrance for the server control.
@@ -23,6 +24,7 @@ public class Servers {
      */
     private static void startServers() {
         new GreetingServer().start();
+        new LoginServer().start();
     }
 
     /**
