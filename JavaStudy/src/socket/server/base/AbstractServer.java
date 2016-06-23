@@ -110,7 +110,7 @@ public abstract class AbstractServer extends Thread {
         serverBean.setStartTime(new Date().getTime());
         serverBean.setServer(this);
         servers.add(serverBean);
-        Utils.println("Add server " + getServerName());
+        Utils.println("Add server " + getServerName() + " .");
     }
 
     /**
@@ -120,6 +120,7 @@ public abstract class AbstractServer extends Thread {
         for (int i = 0; i < servers.size(); i++) {
             if (getPort() == servers.get(i).getServerPort()) {
                 servers.remove(i);
+                Utils.println("Stop " + getServerName() + " server.");
                 break;
             }
         }
