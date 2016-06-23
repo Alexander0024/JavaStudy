@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import socket.Constants;
 import socket.Utils;
 
 /**
@@ -13,30 +14,23 @@ import socket.Utils;
  */
 public class GreetingClient {
     public static void main(String[] args) {
-        String serverName;
-        int port;
-        if (args.length == 0) {
-            serverName = "127.0.0.1";
-            port = 6769;
-        } else {
-            serverName = args[0];
-            port = Integer.parseInt(args[1]);
-        }
         try {
-            // 3 Connect Server
-            Utils.println("Connecting to " + serverName + " on port " + port);
-            Socket client = new Socket(serverName, port);
+            // 1 Connect Server
+            Utils.println("Connecting to " + Constants.LOCAL_SERVER_LOCATION + " on port " +
+                    Constants.GREETING_SERVER_PORT);
+            Socket client = new Socket(Constants.LOCAL_SERVER_LOCATION, Constants
+                    .GREETING_SERVER_PORT);
             Utils.println("Connected to " + client.getRemoteSocketAddress());
 
-            // 4 Send message to Server
+            // 2 Send message to Server
             DataOutputStream out = new DataOutputStream(client.getOutputStream());
             out.writeUTF("Hello from " + client.getLocalSocketAddress());
 
-            // 7 Get message from Server
+            // 3 Get message from Server
             DataInputStream in = new DataInputStream(client.getInputStream());
             Utils.println("Server says " + in.readUTF());
 
-            // 8 Close connection
+            // 4 Close connection
             client.close();
         } catch (UnknownHostException e) {
             e.printStackTrace();

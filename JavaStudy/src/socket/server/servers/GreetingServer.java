@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import socket.Constants;
 import socket.Utils;
 import socket.server.base.AbstractServer;
 
@@ -21,12 +22,12 @@ public class GreetingServer extends AbstractServer {
 
     @Override
     public int getPort() {
-        return 6769;
+        return Constants.GREETING_SERVER_PORT;
     }
 
     @Override
     public int getTimeout() {
-        return 0;
+        return Constants.TIMEOUT;
     }
 
     @Override
@@ -36,18 +37,18 @@ public class GreetingServer extends AbstractServer {
 
     @Override
     public void running(Socket server) throws IOException {
-        // 2 Waiting for client
-        Utils.println("Get connected to " + server.getRemoteSocketAddress());
+        // 2 Client connected
+        Utils.println("Get connected from " + server.getRemoteSocketAddress());
 
-        // 5 Get UTF message from client
+        // 3 Get UTF message from client
         DataInputStream in = new DataInputStream(server.getInputStream());
         Utils.println(in.readUTF());
 
-        // 6 Send message to client
+        // 4 Send message to client
         DataOutputStream out = new DataOutputStream(server.getOutputStream());
         out.writeUTF("Thank you for connecting to " + server.getLocalSocketAddress() + "\nGoodbye!");
 
-        // 8 Close connection
+        // 5 Close connection
         server.close();
         Utils.println("Bye-bye!");
     }

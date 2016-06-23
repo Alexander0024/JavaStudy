@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
+import socket.Constants;
 import socket.Utils;
 import socket.server.base.AbstractServer;
 
@@ -25,12 +26,12 @@ public class LoginServer extends AbstractServer {
 
     @Override
     public int getPort() {
-        return 6666;
+        return Constants.LOGIN_SERVER_PORT;
     }
 
     @Override
     public int getTimeout() {
-        return 0;
+        return Constants.TIMEOUT;
     }
 
     @Override

@@ -3,7 +3,6 @@ package socket.server.base;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +16,7 @@ import socket.server.bean.ServerBean;
  * Created by Alexander on 2016/6/15.
  */
 public abstract class AbstractServer extends Thread {
+
     /**
      * Server List
      */
@@ -28,17 +28,17 @@ public abstract class AbstractServer extends Thread {
     private boolean isRunning = false;
 
     /**
+     * start server when init
+     */
+    public AbstractServer() {
+        start();
+    }
+
+    /**
      * Thread Run
      */
     @Override
     public void run() {
-        startServer();
-    }
-
-    /**
-     * Start server
-     */
-    protected void startServer() {
         isRunning = true;
         addServer();
         startSocket();
@@ -65,6 +65,7 @@ public abstract class AbstractServer extends Thread {
      * List all running servers.
      */
     public static void printAllServers() {
+        Utils.println("Got " + servers.size() + " servers running!");
         System.out.println
                 ("========================================================================");
         System.out.printf("%20s\t%6s\t%10s\t%20s\n", "Server Name", "Port", "Timeout", "StartTime");
@@ -89,8 +90,9 @@ public abstract class AbstractServer extends Thread {
             Utils.println("Start server " + getServerName() + " on port " + server.getLocalPort()
                     + " ...");
             while (isRunning) {
+                init();
                 Socket socket = server.accept();
-                new Thread(new Task(socket)).start();
+                running(socket);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -108,6 +110,7 @@ public abstract class AbstractServer extends Thread {
         serverBean.setStartTime(new Date().getTime());
         serverBean.setServer(this);
         servers.add(serverBean);
+        Utils.println("Add server " + getServerName());
     }
 
     /**
@@ -155,23 +158,4 @@ public abstract class AbstractServer extends Thread {
      * @throws IOException throws IOException when meet the running exception.
      */
     public abstract void running(Socket server) throws IOException;
-
-    class Task implements Runnable {
-        Socket server;
-
-        public Task(Socket server) {
-            this.server = server;
-        }
-
-        public void run() {
-            try {
-                init();
-                running(server);
-            } catch (SocketTimeoutException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

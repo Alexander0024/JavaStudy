@@ -23,8 +23,8 @@ public class Servers {
      * Start all servers
      */
     private static void startServers() {
-        new GreetingServer().start();
-        new LoginServer().start();
+        new GreetingServer();
+        new LoginServer();
     }
 
     /**
