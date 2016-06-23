@@ -10,7 +10,9 @@ public class Constants {
 
     public static int TIMEOUT = 0;
 
-    public static int GREETING_SERVER_PORT = 6769;
+    public static int HEARTBEAT_SERVER_PORT = 3333;
 
     public static int LOGIN_SERVER_PORT = 6666;
+
+    public static int GREETING_SERVER_PORT = 6769;
 }

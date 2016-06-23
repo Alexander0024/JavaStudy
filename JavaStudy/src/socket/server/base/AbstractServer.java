@@ -92,6 +92,7 @@ public abstract class AbstractServer extends Thread {
             while (isRunning) {
                 init();
                 Socket socket = server.accept();
+                Utils.println("Get connected from " + socket.getRemoteSocketAddress());
                 running(socket);
             }
         } catch (IOException e) {
