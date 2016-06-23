@@ -37,8 +37,6 @@ public class GreetingServer extends AbstractServer {
 
     @Override
     public void running(Socket server) throws IOException {
-        // 2 Client connected
-
         // 3 Get UTF message from client
         DataInputStream in = new DataInputStream(server.getInputStream());
         Utils.println(in.readUTF());

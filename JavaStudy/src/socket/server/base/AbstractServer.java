@@ -65,15 +65,19 @@ public abstract class AbstractServer extends Thread {
      * List all running servers.
      */
     public static void printAllServers() {
-        Utils.println("Got " + servers.size() + " servers running!");
-        System.out.println
-                ("========================================================================");
-        System.out.printf("%20s\t%6s\t%10s\t%20s\n", "Server Name", "Port", "Timeout", "StartTime");
-        for (ServerBean serverBean : servers) {
-            serverBean.printInfo();
+        try {
+            Utils.println("Got " + servers.size() + " servers running!");
+            System.out.println
+                    ("========================================================================");
+            System.out.printf("%20s\t%6s\t%10s\t%20s\n", "Server Name", "Port", "Timeout", "StartTime");
+            for (int i = 0; i < servers.size(); i++) {
+                servers.get(i).printInfo();
+            }
+            System.out.println
+                    ("========================================================================");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        System.out.println
-                ("========================================================================");
     }
 
     /**

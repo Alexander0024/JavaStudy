@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 import socket.server.base.AbstractServer;
 import socket.server.servers.GreetingServer;
+import socket.server.servers.HeartbeatServer;
 import socket.server.servers.LoginServer;
 
 /**
@@ -23,8 +24,9 @@ public class Servers {
      * Start all servers
      */
     private static void startServers() {
-        new GreetingServer();
+        new HeartbeatServer();
         new LoginServer();
+        new GreetingServer();
     }
 
     /**
