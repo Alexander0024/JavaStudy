@@ -10,7 +10,7 @@ import socket.Utils;
 import socket.server.base.AbstractServer;
 
 /**
- * Demo greeting server.
+ * Greeting server.
  *
  * Created by Alexander on 2016/6/15.
  */
