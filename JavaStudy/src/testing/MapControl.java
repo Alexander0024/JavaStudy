@@ -10,7 +10,7 @@ import java.util.Map;
 public class MapControl {
     public static void main(String[] args) {
         Map<String, String> mMap = new HashMap<String, String>();
-        mMap.put("admin", "admin");
+        mMap.put("admin", "admin888");
         System.out.println("Is contains admin? " + mMap.get("admin"));
         System.out.println("Is contains admon? " + mMap.get("admon"));
     }

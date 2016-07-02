@@ -1,12 +1,16 @@
 package testing;
 
 /**
+ * 设置Email隐藏规则
+ * <p/>
  * Created by Alexander on 2016/6/28.
  */
 public class EmailHidden {
     public static void main(String[] args) {
-        System.out.println("Mail alexander.lwz@vip.html.gmail.com is hidden to " + hideEmail("alexander.lwz@vip.html.gmail.com"));
-        System.out.println("Mail alexander.lwz@gmail.com is hidden to " + hideEmail("alexander.lwz@gmail.com"));
+        System.out.println("Mail alexander.lwz@vip.html.gmail.com is hidden to " + hideEmail
+                ("alexander.lwz@vip.html.gmail.com"));
+        System.out.println("Mail alexander.lwz@gmail.com is hidden to " + hideEmail("alexander" +
+                ".lwz@gmail.com"));
         System.out.println("Mail alex@gmail.com is hidden to " + hideEmail("alex@gmail.com"));
         System.out.println("Mail al@gmail.com is hidden to " + hideEmail("al@gmail.com"));
         System.out.println("Mail a@gmail.com is hidden to " + hideEmail("a@gmail.com"));
